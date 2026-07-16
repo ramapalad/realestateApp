@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('code')->unique();
+            $table->string('code', 20)->unique();
             
             $table->string('contact_person')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone', 30)->nullable();
 
             $table->string('website')->nullable();
             $table->string('logo')->nullable();
@@ -30,7 +30,6 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index('name');
-            $table->index('code');
         });
     }
 

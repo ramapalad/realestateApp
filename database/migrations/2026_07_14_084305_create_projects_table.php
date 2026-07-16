@@ -13,7 +13,22 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('developer_id')
+                  ->constrained()
+                  ->cascadeOnUpdate()
+                  ->restrictedOnDelete();
+            $table->string('name');
+            $table->string('code', 20)->unique();
+            $table->string('location')->nullable();
+            $table->string('city');
+            $table->string('province');
+            $table->string('property_type');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->index('developer_id');
+            $table->index('city');
         });
     }
 
